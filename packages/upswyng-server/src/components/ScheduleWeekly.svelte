@@ -4,8 +4,6 @@
   import moment from "moment-timezone";
   import Select from "svelte-select";
 
-  const { tz } = moment;
-
   export let value; // TResourceSchedule
 
   function addWeeklyRecurrence() {
