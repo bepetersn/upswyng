@@ -4,7 +4,9 @@
   import { RRule } from "rrule";
   import moment from "moment-timezone";
   import ScheduleItem from "./ScheduleSelectorScheduleItem.svelte";
+  import ScheduleMonthly from "./ScheduleMonthly.svelte";
   import ScheduleWeekly from "./ScheduleWeekly.svelte";
+  import ScheduleYearly from "./ScheduleYearly.svelte";
   import Select from "svelte-select";
 
   const { tz } = moment;
@@ -81,6 +83,12 @@
     </div>
   </div>
 </div>
+{#if repeatState.value === 'monthly'}
+  <ScheduleMonthly />
+{/if}
+{#if repeatState.value === 'yearly'}
+  <ScheduleYearly />
+{/if}
 {#if repeatState.value === 'weekly'}
   <ScheduleWeekly />
 {/if}
