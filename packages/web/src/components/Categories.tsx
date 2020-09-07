@@ -14,7 +14,7 @@ import { TResourceCategory, TResourceSubcategory } from "../webTypes";
 import CategoryResults from "./CategoryResults";
 import Container from "@material-ui/core/Container";
 import React from "react";
-import { colors } from "../App.styles";
+import { colors } from "@upswyng/common";
 
 export interface TCategoryDefinition {
   color: keyof typeof colors;
@@ -209,6 +209,10 @@ export const categories: Record<TCategoryName, TCategoryDefinition> = {
       {
         text: "Abused",
         stub: "abused",
+      },
+      {
+        text: "Safe Parking",
+        stub: "safe-parking",
       },
       {
         text: "Pregnant",

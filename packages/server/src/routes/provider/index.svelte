@@ -1,6 +1,9 @@
 <script>
-  import { goto } from "@sapper/app";
+  import { goto, stores } from "@sapper/app";
   import ResourceSearch from "./../../components/ResourceSearch.svelte";
+
+  const { session } = stores();
+  const isLoggedIn = $session && !!$session.user;
 </script>
 
 <style>
@@ -15,7 +18,7 @@
 </style>
 
 <svelte:head>
-  <title>Upswyng: Service Provider Portal</title>
+  <title>UpSwyng: Service Provider Portal</title>
 </svelte:head>
 
 <section class="hero is-dark">
@@ -28,7 +31,7 @@
             src="/static/upswyng_light.svg" />
         </div>
         <div class="column">
-          <h1 class="title">Upswyng Service Provider Portal</h1>
+          <h1 class="title">UpSwyng Service Provider Portal</h1>
           <p class="subtitle">
             Welcome to the Provider’s Portal. This is the place to update your
             organization’s information so it’s the latest and most accurate for
@@ -54,9 +57,15 @@
           changes are subject to confirmation before going live. Just update and
           save as a draft and we will do the rest.
         </p>
-        <a href="/provider/login" class="button is-primary">
-          Login to Add Yours
-        </a>
+        {#if isLoggedIn}
+          <a href="/provider/resource/create" class="button is-primary">
+            Add Yours
+          </a>
+        {:else}
+          <a href="/provider/login" class="button is-primary">
+            Login to Add Yours
+          </a>
+        {/if}
       </div>
       <div class="column">
         <aside class="message is-medium">

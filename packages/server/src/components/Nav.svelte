@@ -20,7 +20,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/provider">
         <img
-          alt="Upswyng: Resources within reach"
+          alt="UpSwyng: Resources within reach"
           src="static/upswyng_arrow.svg" />
       </a>
       <!-- svelte-ignore a11y-missing-attribute -->
@@ -75,7 +75,7 @@
                 <span class="tag is-dark">Admin</span>
               </a>
               <a class="navbar-item" href="/provider/bot" rel="prefetch">
-                <span class="is-family-monospace">upswyngbot &nbsp;</span>
+                <span class="is-family-monospace">UpSwyngbot &nbsp;</span>
                 <span class="tag is-dark">Admin</span>
               </a>
               <a class="navbar-item" href="/provider/users" rel="prefetch">
@@ -84,15 +84,13 @@
               </a>
               <hr class="navbar-divider" />
             {/if}
-            <!-- svelte-ignore a11y-missing-attribute -->
-            <a class="navbar-item">About</a>
-            <!-- svelte-ignore a11y-missing-attribute -->
-            <a class="navbar-item">Privacy</a>
-            <!-- svelte-ignore a11y-missing-attribute -->
-            <a class="navbar-item">Contact</a>
-            <hr class="navbar-divider" />
-            <!-- svelte-ignore a11y-missing-attribute -->
-            <a class="navbar-item">Report an issue</a>
+            <a class="navbar-item" href="/provider/about">About</a>
+            <a class="navbar-item" href="/provider/privacy-policy">
+              Privacy Policy
+            </a>
+            <a class="navbar-item" href="/provider/terms-of-use">
+              Terms of Use
+            </a>
           </div>
         </div>
       </div>

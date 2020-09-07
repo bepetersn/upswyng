@@ -4,6 +4,7 @@ import PageBanner from "./PageBanner";
 import React from "react";
 import ResourceList from "./ResourceList";
 import SubCategories from "./SubCategories";
+import Typography from "@material-ui/core/Typography";
 import { useParams } from "react-router-dom";
 import useResourcesByCategory from "./useResourcesByCategory";
 import useResourcesBySubcategory from "./useResourcesBySubcategory";
@@ -24,14 +25,27 @@ const CategoryResults = ({
   const params = useParams<{ subcategory?: string }>();
 
   const { text: categoryText, stub: categoryStub } = category;
-  const categoryResources = useResourcesByCategory(categoryStub);
+  const {
+    data: categoryResources,
+    status: categoryResourcesStatus,
+  } = useResourcesByCategory(categoryStub);
 
-  const subcategoryStub = params.subcategory ? params.subcategory : null;
-  const subcategoryResources = useResourcesBySubcategory(subcategoryStub);
+  const subcategoryStub = params.subcategory;
+  const {
+    data: subcategoryResources,
+    status: subcategoryResourcesStatus,
+  } = useResourcesBySubcategory(categoryStub, subcategoryStub);
+
+  const status = subcategoryStub
+    ? subcategoryResourcesStatus
+    : categoryResourcesStatus;
+  const resources = subcategoryStub ? subcategoryResources : categoryResources;
 
   return (
     <>
-      <PageBanner text={categoryText} color={categoryColor} />
+      <PageBanner color={categoryColor}>
+        <Typography variant="h1">{categoryText}</Typography>
+      </PageBanner>
       <SubCategories
         category={category}
         color={categoryColor}
@@ -39,7 +53,8 @@ const CategoryResults = ({
       />
       <ResourceList
         placeholder={placeholder}
-        resources={subcategoryStub ? subcategoryResources : categoryResources}
+        resources={resources}
+        status={status}
       />
     </>
   );
